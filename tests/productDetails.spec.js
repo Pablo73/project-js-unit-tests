@@ -52,7 +52,7 @@ describe('6 - Implemente os casos de teste para a função `productDetails`', ()
 
     // Teste se os dois productIds terminam com 123.
     const checkFirstNumberArray = productDetails('Alcool gel', 'Máscara')[0].details.productId;
-    const checkSecondNumberArray =productDetails('Alcool gel', 'Máscara')[1].details.productId;
+    const checkSecondNumberArray = productDetails('Alcool gel', 'Máscara')[1].details.productId;
 
     expect(checkFirstNumberArray.slice(checkFirstNumberArray.length -3)).toBe('123');
     expect(checkSecondNumberArray.slice(checkSecondNumberArray.length -3)).toBe('123');
