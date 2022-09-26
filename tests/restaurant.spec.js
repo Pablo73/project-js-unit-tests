@@ -52,6 +52,11 @@ const createMenu = require('../src/restaurant');
 
 */
 
+const meuRestaurante = {
+  food: { coxinha: 3.90, sanduiche: 9.90 },
+  drinks: { agua: 3.90, cerveja: 6.90 },
+};
+
 describe('10 - Implemente a função `createMenu`, bem como seus casos de teste', () => {
   it('Verifica se a função `createMenu` tem o comportamento esperado', () => {
     // fail('Teste vazio!');
@@ -69,14 +74,14 @@ describe('10 - Implemente a função `createMenu`, bem como seus casos de teste'
     // const objetoRetornado = createMenu({ food: {}, drink: {} });
     // objetoRetornado.fetchMenu() // Retorno: { food: {}, drink: {}}
 
-    expect(createMenu({ food: {}, drink: {} }).fetchMenu()).toMatchObject({ food: {}, drink: {} });
+    expect(createMenu({ food: {}, drink: {} }).fetchMenu()).toEqual({ food: {}, drink: {} });
 
     // TESTE 3: Verifique se o menu passado pra função createMenu() é idêntico ao menu recuperado pela função 'objetoRetornado.fetchMenu()'
   
     // const objetoRetornado = createMenu(objetoQualquer);
     // objetoRetornado.fetchMenu() // Retorno: objetoQualquer
 
-    expect(createMenu('objetoQualquer').fetchMenu()).toEqual('objetoQualquer');
+    expect(createMenu(meuRestaurante).fetchMenu()).toEqual({ food: { coxinha: 3.90, sanduiche: 9.90 }, drinks: { agua: 3.90, cerveja: 6.90 }, });
 
     // Agora faça o PASSO 1 no arquivo `src/restaurant.js`.
     // --------------------------------------------------------------------------------------
@@ -95,12 +100,12 @@ describe('10 - Implemente a função `createMenu`, bem como seus casos de teste'
     // passando uma string como parâmetro (como `objetoRetornado.order('coxinha')`), tal string é adicionada
     // ao array retornado em `objetoRetornado.consumption`.
     // ```
-    // const objetoRetornado = createMenu(objetoQualquer);
-    // objetoRetornado.order("coxinha");
+    const objetoRetornado = createMenu({});
+    objetoRetornado.order("coxinha");
     // objetoRetornado.consumption // Retorno: ["coxinha"]
     // ```
-    expect(createMenu().order('coxinha')).toEqual('coxinha');
-    expect(createMenu().consumption).toContain('coxinha');
+    // createMenu().order('coxinha');
+    expect(objetoRetornado.consumption).toEqual(['coxinha']);
 
     // Agora faça o PASSO 3 no arquivo `src/restaurant.js`.
     // --------------------------------------------------------------------------------------
