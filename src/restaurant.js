@@ -100,19 +100,24 @@ const createMenu = (myMenu) => {
     restaurant.consumption = [];
     restaurant.order = (request) => restaurant.consumption.push(request);
     restaurant.pay = () => {
-       let soma = 0;
+      let soma = 0;
         const listPedido = Object.entries(myMenu.food).concat(Object.entries(myMenu.drink));
+        const listConsumption = restaurant.consumption;
 
-        for (let index = 0; index < restaurant.consumption.length; index += 1) {
-          for (let index1 = 0; index1 < listPedido.length; index1 += 1) {
-          if (restaurant.consumption[index] === listPedido[index1][0]) {
-            soma += listPedido[index1][1];
-          }
-        }
-      }
-        return soma * 1.1;
+        listConsumption.forEach((consumo) => {
+          listPedido.forEach((pedido) => {
+            if (consumo === pedido[0]) {
+              soma += (pedido[1] * 1.1);
+            }
+          });
+        });
+        return soma;
     };
   return restaurant;
 };
+const meuRestaurante = createMenu({ food: { coxinha: 3.9, sopa: 9.9 }, drink: { agua: 3.9, cerveja: 6.9 } });
+meuRestaurante.order('coxinha'); // Retorno: undefined
+meuRestaurante.order('agua'); // Retorno: undefined
+console.log(meuRestaurante.pay()); // Retorno: 4.29
 
 module.exports = createMenu;
