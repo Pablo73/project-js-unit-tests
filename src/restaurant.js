@@ -65,34 +65,6 @@
 //
 // Agora faça o TESTE 5 no arquivo `tests/restaurant.spec.js`.
 
-//------------------------------------------------------------------------------------------
-
-// PASSO 3: Crie uma função, separada da função `createMenu()`, que, ao receber uma string como parâmetro, 
-// adiciona essa string ao array de `objetoRetornado.consumption`. Essa nova função será adicionada à chave `order`.
-// 
-// DICA PARA DESENVOLVIMENTO: 
-// - Definir a função `createMenu()`
-// - Definir o objeto que a `createMenu()` retorna, mas separadamente 
-// - E depois, definir essa nova função que será atribuída a `order`.
-// ```
-// const restaurant = {}
-//
-// const createMenu = (myMenu) => // Lógica que edita o objeto `restaurant`
-//
-// const orderFromMenu = (request) => // Lógica que adiciona à chave `consumption` de `restaurant` a string recebida no parâmetro `request`. 
-// // Essa função deve ser associada à chave `order` de `restaurant`
-// ```
-// Agora faça o TESTE 6 no arquivo `tests/restaurant.spec.js`.
-
-//------------------------------------------------------------------------------------------
-
-// PASSO 4: Adicione ao objeto retornado por `createMenu()` uma chave `pay` armazenando uma função
-// que:
-// - percorrerá item a item de `objetoRetornado.consumption`;
-// - fará a soma do preço desses itens;
-// - retornará o valor somado acrescido de 10%.
-// DICA: para isso, você precisará percorrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
-
 const restaurant = {};
 
 const createMenu = (myMenu) => {
@@ -115,9 +87,5 @@ const createMenu = (myMenu) => {
     };
   return restaurant;
 };
-const meuRestaurante = createMenu({ food: { coxinha: 3.9, sopa: 9.9 }, drink: { agua: 3.9, cerveja: 6.9 } });
-meuRestaurante.order('coxinha'); // Retorno: undefined
-meuRestaurante.order('agua'); // Retorno: undefined
-console.log(meuRestaurante.pay()); // Retorno: 4.29
 
 module.exports = createMenu;
